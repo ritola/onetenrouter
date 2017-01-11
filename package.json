@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/ritola/onetenrouter",
   "dependencies": {
+    "midi": "^0.9.5",
+    "ramda": "^0.23.0"
   },
   "devDependencies": {
     "standard": "^8.6.0"
