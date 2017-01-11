@@ -1,5 +1,9 @@
 var midi = require('./lib/bacon-midi')
 
-var input = midi.input.open(0)
 console.log(midi.input.ports())
-input.close()
+console.log('Opening port 1: ' + midi.input.ports()[1])
+
+var input = midi.input.open(1)
+input.stream.log()
+
+// input.close()
