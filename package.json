@@ -1,7 +1,7 @@
 {
   "name": "onetenrouter",
-  "version": "1.0.0",
-  "description": "Stanton DaScratch SCS.3D DJ controller router Edit",
+  "version": "0.1.0",
+  "description": "Stanton DaScratch SCS.3D DJ controller router for Native Instruments Traktor 2 Pro",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
