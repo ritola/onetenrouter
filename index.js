@@ -1,59 +1,48 @@
 const midi = require('./lib/bacon-midi')
-const R = require('ramda')
+const Scs3d = require('./lib/stanton-scs3d')
 
 console.log('Input ports:', midi.input.ports())
 console.log('Output ports:', midi.output.ports())
 
-console.log('Opening input port 1: ' + midi.input.ports()[1])
-var input = midi.input.open(1, { sysex: true })
+console.log('Using input port 1: ' + midi.input.ports()[1])
+console.log('Using output port 1: ' + midi.output.ports()[1])
 
-console.log('Opening output port 1: ' + midi.output.ports()[1])
-var output = midi.output.open(1)
+const scs3d = Scs3d(
+  midi.input.open(1, { sysex: true }),
+  midi.output.open(1)
+)
 
-var inStream = input.stream.map('.message')
+scs3d.version.query()
+scs3d.version.stream.log('Stanton SCS.3d')
 
-inStream.log()
+scs3d.version.stream.onValue(reset)
 
-inStream
-  .filter(R.equals([144, 109, 1])) // Play-button down
-  .onValue(() => {
-    output.send([0xF0, 0x00, 0x01, 0x60, 0x01, 0x00, 0xF7]) // Mode: C1 (C+S+C)
-  })
+function reset () {
+  scs3d.leds.logo(0x00)
+  scs3d.extinguishAllLeds()
+  scs3d.leds.deckA(0x00)
+  scs3d.leds.deckB(0x00)
+  scs3d.surface.leds.setAllBlack()
+  scs3d.surface.leds.setCircleAll(0x00)
+  scs3d.button.mode.fx.ledOnPress(0x02, 0x01)
+  scs3d.button.mode.eq.ledOnPress(0x02, 0x01)
+  scs3d.button.mode.loop.ledOnPress(0x02, 0x01)
+  scs3d.button.mode.trig.ledOnPress(0x02, 0x01)
+  scs3d.button.mode.vinyl.ledOnPress(0x02, 0x01)
+  scs3d.button.mode.deck.ledOnPress(0x02, 0x01)
+  scs3d.button.soft.b11.ledOnPress(0x02, 0x01)
+  scs3d.button.soft.b12.ledOnPress(0x02, 0x01)
+  scs3d.button.soft.b13.ledOnPress(0x02, 0x01)
+  scs3d.button.soft.b14.ledOnPress(0x02, 0x01)
+  scs3d.button.transport.play.ledOnPress(0x00, 0x01)
+  scs3d.button.transport.cue.ledOnPress(0x00, 0x01)
+  scs3d.button.transport.sync.ledOnPress(0x00, 0x01)
+  scs3d.button.transport.tap.ledOnPress(0x00, 0x01)
+  scs3d.leds.logo(0x01)
+  scs3d.test()
+}
 
-inStream
-  .filter(R.equals([144, 110, 1])) // Cue-button down
-  .onValue(() => {
-    output.send([0xF0, 0x00, 0x01, 0x60, 0x01, 0x01, 0xF7]) // Mode: S5 (B+S+S)
-  })
-
-inStream
-  .filter(R.equals([144, 111, 1])) // Sync-button down
-  .onValue(() => {
-    output.send([0xF0, 0x00, 0x01, 0x60, 0x01, 0x02, 0xF7]) // Mode: S3 (S+S+B)
-  })
-
-inStream
-  .filter(R.equals([144, 112, 1])) // Tap-button down
-  .onValue(() => {
-    output.send([0xF0, 0x00, 0x01, 0x60, 0x01, 0x03, 0xF7]) // Mode: S3 + S5 (S+S+S)
-  })
-
-inStream
-  .filter(R.equals([144, 48, 1])) // Play-button down
-  .onValue(() => {
-    output.send([0xF0, 0x00, 0x01, 0x60, 0x01, 0x04, 0xF7]) // Mode: Buttons (B+S+B)
-  })
-
-inStream
-  .filter(R.equals([144, 50, 1])) // Play-button down
-  .onValue(() => {
-    output.send([0xF0, 0x00, 0x01, 0x60, 0x10, channel, 0xF7]) // Compatibility mode
-  })
-
-const channel = 0 // midi channel
-
-output.send([0xF0, 0x7E, channel, 0x06, 0x01, 0xF7])
-// Turn off Stanton logo
-output.send([0x90, 0x7A, 0x00])
-
-// input.close()
+scs3d.button.transport.play.stream.onValue(() => { scs3d.surface.mode.setCircle() })
+scs3d.button.transport.cue.stream.onValue(() => { scs3d.surface.mode.setSliders() })
+scs3d.button.transport.sync.stream.onValue(() => { scs3d.surface.mode.setButtons() })
+scs3d.button.transport.tap.stream.onValue(() => { scs3d.button.mode.setAll(0x02) })
