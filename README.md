@@ -48,6 +48,10 @@ Your turn. Tell me in which setup you would like to use the router.
 * Corresponding TSI file installed on Traktor (need to be described later)
 * Software: Node.js (7.3.0 installed for example using NVM)
 
+### Fedora
+
+    sudo dnf install alsa-lib-devel
+
 ## Preparation
 
     npm install
