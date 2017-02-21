@@ -47,7 +47,6 @@ Your turn. Tell me in which setup you would like to use the router.
 * Hardware: 2 x Stanton DaScratch SCS.3D DJ controller
 * Hardware: Additional Traktor Control Z1 (planned to be removed at 1.2.0)
 * Commercial Software: Traktor 2 Pro
-* Corresponding TSI file installed on Traktor (need to be described later)
 * Software: Node.js (7.3.0 installed for example using Homebrew or NVM)
 
 ### MacOS
@@ -59,6 +58,12 @@ Your turn. Tell me in which setup you would like to use the router.
     sudo dnf install alsa-lib-devel
 
 ## Preparation
+
+In Traktor, add the corresponding TSI file in the _Preferences_ -> _Controller
+Manager_ -> _Device Setup_ screen, by selecting _Add..._ -> _Import TSI_ ->
+_Stanton_ -> _SCS3 System_.
+
+Run the following comand on `onetenrouter` directory:
 
     npm install
 
