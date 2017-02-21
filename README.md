@@ -2,12 +2,14 @@
 
 Stanton DaScratch SCS.3D DJ controller router for Native Instruments Traktor 2
 Pro. This is a replacement for Stanton DaRouter running from command line on
-Windows or MacOS.
+MacOS, Windows or Linux.
 
 # Current status
 
-Finding basic MIDI communication between Oneten Router and single DaScratch
+Finding basic MIDI communication between Oneten Router and dual DaScratch
 controller. Not production ready.
+
+* Help is needed to test Windows support
 
 ## Roadmap
 
@@ -46,9 +48,13 @@ Your turn. Tell me in which setup you would like to use the router.
 * Hardware: Additional Traktor Control Z1 (planned to be removed at 1.2.0)
 * Commercial Software: Traktor 2 Pro
 * Corresponding TSI file installed on Traktor (need to be described later)
-* Software: Node.js (7.3.0 installed for example using NVM)
+* Software: Node.js (7.3.0 installed for example using Homebrew or NVM)
 
-### Fedora
+### MacOS
+
+* Software: XCode (installed for example using App Store)
+
+### Fedora Linux
 
     sudo dnf install alsa-lib-devel
 
