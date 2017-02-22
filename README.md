@@ -15,6 +15,33 @@ controller. Not production ready.
 
 Future releases:
 
+### 0.1.0
+
+* Deck selection and swapping
+* Play, Cue, Sync and Tap buttons get routed
+
+### 0.2.0
+
+* Tempo adjust
+* Level display
+
+### 0.3.0
+
+* Basic movement
+
+### 0.4.0
+
+* Loop mode
+
+### 0.5.0
+
+* Trigger mode
+
+### 0.6.0
+
+* Beat matching
+* Scratching
+
 ### 1.0.0
 
 Software can be used in DJ gig in the place of DaRouter
@@ -32,7 +59,7 @@ Remix deck support
 
 ### 1.2.0
 
-Volume and EQ control support using only 2 x SCS.3D
+Volume, equalizer and effects control support using only 2 x SCS.3D
 
 * Fixed A & B track decks, and C & D remix decks setup
 
