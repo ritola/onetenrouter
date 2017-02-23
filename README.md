@@ -6,10 +6,15 @@ MacOS, Windows or Linux.
 
 # Current status
 
-Finding basic MIDI communication between Oneten Router and dual DaScratch
-controller. Not production ready.
+Finding basic MIDI communication between Oneten Router, two DaScratch
+controllers and Traktor Pro DJ software. Not production ready.
 
-* Help is needed to test Windows support
+Current features:
+
+* Deck selection and swapping
+* Play button works
+
+Help is needed to test Windows support.
 
 ## Roadmap
 
@@ -17,13 +22,13 @@ Future releases:
 
 ### 0.1.0
 
-* Deck selection and swapping
-* Play, Cue, Sync and Tap buttons get routed
+* Play, Cue, Sync and Tap buttons working
 
 ### 0.2.0
 
 * Tempo adjust
 * Level display
+* Deck ring rotates when the song is playing
 
 ### 0.3.0
 
