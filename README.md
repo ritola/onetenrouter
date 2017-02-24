@@ -12,17 +12,13 @@ controllers and Traktor Pro DJ software. Not production ready.
 Current features:
 
 * Deck selection and swapping
-* Play button works
+* Play, Cue, Sync and Tap buttons work
 
 Help is needed to test Windows support.
 
 ## Roadmap
 
 Future releases:
-
-### 0.1.0
-
-* Play, Cue, Sync and Tap buttons working
 
 ### 0.2.0
 
